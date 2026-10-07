@@ -2,7 +2,7 @@ name: Sync with upstream
 
 on:
   schedule:
-    # 每天北京时间 08:00 自动检查一次
+    # 每天北京时间 08:00 自动检查
     - cron: "0 0 * * *"
 
   # 允许手动运行
@@ -12,12 +12,9 @@ jobs:
   sync:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     steps:
       - name: Sync upstream
         run: |
           gh repo sync ${{ github.repository }} --branch main
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
