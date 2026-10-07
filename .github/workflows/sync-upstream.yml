@@ -3,7 +3,8 @@ name: Sync with upstream
 on:
   schedule:
     # 每天北京时间 08:00 自动检查
-    - cron: "0 0 * * *"
+    # 每 6 小时检查一次
+    - cron: "0 6 * * *"
 
   # 允许手动运行
   workflow_dispatch:
